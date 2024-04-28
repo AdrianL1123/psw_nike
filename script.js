@@ -12,12 +12,41 @@ var typed = new Typed(".typewriter", {
   loop: true,
 });
 
-const navbar = document.getElementById("navbar-scrollspy");
+const navbar = document.getElementById("navbarScrollspy");
 
 window.addEventListener("scroll", () => {
-  if (this.window.scrollY > 150) {
+  if (window.scrollY > 294) {
     navbar.style.borderBottom = "1px solid black";
   } else {
     navbar.style.borderBottom = "none";
   }
 });
+
+const first = document.getElementById("first-line");
+const second = document.getElementById("second-line");
+
+first.style.opacity = "1";
+second.style.opacity = "0";
+first.style.transform = "translate(-50%, -50%)";
+second.style.transform = "translate(-50%, 100%)";
+
+let counter = 0;
+
+function swapText() {
+  console.log("run");
+  if (counter === 0) {
+    first.style.opacity = "0";
+    second.style.opacity = "1";
+    first.style.transform = "translate(-50%, 100%)";
+    second.style.transform = "translate(-50%, -50%)";
+    counter = 1;
+  } else {
+    first.style.opacity = "1";
+    second.style.opacity = "0";
+    first.style.transform = "translate(-50%, -50%)";
+    second.style.transform = "translate(-50%, 100%)";
+    counter = 0;
+  }
+}
+
+setInterval(swapText, 5000);
